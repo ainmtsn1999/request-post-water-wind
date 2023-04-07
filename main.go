@@ -10,6 +10,11 @@ import (
 	"time"
 )
 
+type Data struct {
+	Water int `json:"water"`
+	Wind  int `json:"wind"`
+}
+
 func main() {
 
 	//count fot break
@@ -31,7 +36,8 @@ func main() {
 
 func postReq() {
 	//initiliaze data
-	data := map[string]int{}
+	data := Data{}
+
 	// initiliaze range number
 	min := 1
 	max := 20
@@ -39,8 +45,8 @@ func postReq() {
 	randWind := (rand.Intn(max-min) + min)
 
 	//assign data
-	data["water"] = randWater
-	data["wind"] = randWind
+	data.Water = randWater
+	data.Wind = randWind
 
 	client := &http.Client{}
 
